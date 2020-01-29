@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void calculate(View v){
         if(SingleRadio.isChecked()) {
+            numBox.setText(String.format("%d", 1));
             String input = billBox.getText().toString();
             String input2 = perBox.getText().toString();
             if(input.length() > 0 && input2.length() > 0) {
@@ -43,8 +44,9 @@ public class MainActivity extends AppCompatActivity {
                 double perValue = Double.parseDouble(input2);
                 double tipValue = billValue * (perValue*0.01);
                 double totalValue = billValue + tipValue;
-                tipBox.setText(String.format("%.1f", tipValue));
-                totalBox.setText(String.format("%.1f", totalValue));
+                tipBox.setText(String.format("$%.2f", tipValue));
+                totalBox.setText(String.format("$%.2f", totalValue));
+                personBox.setText(String.format("$%.2f", totalValue));
             }
             else {
                 Toast.makeText(this, "One of the Boxes is not filled out", Toast.LENGTH_SHORT).show();
@@ -61,9 +63,9 @@ public class MainActivity extends AppCompatActivity {
                 double tipValue = billValue * (perValue*0.01);
                 double totalValue = billValue + tipValue;
                 double personValue = totalValue / numValue;
-                tipBox.setText(String.format("%.1f", tipValue));
-                totalBox.setText(String.format("%.1f", totalValue));
-                personBox.setText(String.format("%.1f", personValue));
+                tipBox.setText(String.format("$%.2f", tipValue));
+                totalBox.setText(String.format("$%.2f", totalValue));
+                personBox.setText(String.format("$%.2f", personValue));
             }
             else {
                 Toast.makeText(this, "One of the Boxes is not filled out", Toast.LENGTH_SHORT).show();
